@@ -28,6 +28,7 @@
       font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
       font-size:16px;
       background:linear-gradient(180deg,var(--bg),#fbfcfe);
+      background-attachment:fixed;
       color:#0f1724;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
@@ -61,19 +62,32 @@
     .btn {
       background:var(--accent);
       color:white;
-      padding:10px 16px;
+      padding:12px 20px;
       border-radius:10px;
       border:0;
       cursor:pointer;
       font-weight:600;
-      box-shadow:0 6px 18px rgba(31,123,210,0.18);
+      box-shadow:0 8px 24px rgba(0,0,0,0.25);
       white-space:nowrap;
+      transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.2s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: #4D1C10;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     .btn.ghost {
       background:transparent;
       color:var(--accent);
       border:1px solid rgba(31,123,210,0.12);
       box-shadow:none;
+      transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease;
+    }
+    .btn.ghost:hover {
+      color: #4D1C10;
+      border-color: rgba(31,123,210,0.25);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transform: scale(1.05);
     }
 
     /* Hero */
@@ -121,6 +135,11 @@
       border-radius:12px;
       padding:18px;
       box-shadow:var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .problem-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(20,23,28,0.12);
     }
     .problem-card ul{margin:12px 0 0 18px;padding:0;color:var(--muted)}
     .problem-card li{margin-bottom:10px}
@@ -151,6 +170,11 @@
     }
     .benefit{
       background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .benefit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(20,23,28,0.12);
     }
     .benefit h4{margin:0 0 8px 0;font-size:16px}
     .benefit ul{margin:8px 0 0 12px;color:var(--muted)}
@@ -163,6 +187,11 @@
     .step{
       background:linear-gradient(180deg,#fff,#fcfeff);
       padding:14px;border-radius:12px;flex:1;min-width:180px;box-shadow:var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .step:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(20,23,28,0.12);
     }
     .step h5{margin:0 0 8px 0;font-size:16px}
 
@@ -176,12 +205,35 @@
     .pricing .price{font-size:36px;font-weight:800;margin:8px 0}
     .price-note{color:var(--muted);margin-bottom:10px}
     .pricing ul{margin:12px 0 14px 16px;color:var(--muted)}
-    .pricing button{width:100%;padding:12px;border-radius:12px;border:0;font-weight:700;background:#0f1724;color:white;cursor:pointer}
+    .pricing .btn { width:100%; white-space:normal; }
     .guarantee{font-size:13px;color:var(--muted);margin-top:10px}
+
+    /* Highlight section */
+    .highlight {
+      background: linear-gradient(180deg, rgba(94, 25, 20, 0.05), rgba(94, 25, 20, 0.1));
+      padding: 24px;
+      border-radius: 16px;
+      border: 2px solid rgba(94, 25, 20, 0.2);
+      box-shadow: 0 8px 24px rgba(94, 25, 20, 0.15);
+      margin-bottom: 36px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .highlight:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(94, 25, 20, 0.2);
+    }
+    .highlight h3 { margin: 0 0 16px 0; font-size: 24px; color: var(--accent); }
+    .highlight p { margin: 12px 0; }
+    .highlight ul { margin: 12px 0; padding-left: 18px; color: var(--muted); }
+    .highlight li { margin-bottom: 8px; }
 
     /* Social proof */
     .quotes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .quote{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+    .quote{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);transition: transform 0.2s ease, box-shadow 0.2s ease;}
+    .quote:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(20,23,28,0.12);
+    }
     .quote p{margin:0;color:var(--muted)}
     .quote strong{display:block;margin-top:12px;color:#0f1724}
 
@@ -421,7 +473,8 @@
     <!-- Новый блок: Работаем на результат -->
     <div class="highlight">
       <h3>🚀 Работаем максимально на результат</h3>
-      <p>Мы выводим марки одежды на мультибренды.
+      <p>Мы выводим марки одежды на мультибренды.</p>
+      <ul>
         <li>Хотите попасть в Трендайленд и на Пойзон Дроп? Рассказать о своих услугах резидентам бизнес-клуба?</li>
         <li>Приходите на встречи клуба в Казани, Питере и ещё 10 городах — или присоединяйтесь к онлайн демодню.</li>
         <li>Пройдите велком-программу и станьте резидентом. Через 1,5 месяца мы познакомим вас с сообществом.</li>
@@ -451,7 +504,7 @@
             <li>✅ Разборы ваших кейсов</li>
           </ul>
 
-          <button onclick="joinClub()" aria-label="Вступить в клуб">Вступить в клуб</button>
+          <button class="btn" onclick="joinClub()" aria-label="Вступить в клуб">Вступить в клуб</button>
           <p class="guarantee">Первый месяц — пробный период. Если не понравится, вернем деньги.</p>
         </div>
 
