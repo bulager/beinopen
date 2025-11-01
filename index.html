@@ -102,18 +102,17 @@
       align-items:center;
       margin-bottom:36px;
     }
-    .hero h2 { margin:0 0 8px 0; font-size:32px; letter-spacing:-0.2px; }
+    .hero h2 { margin:0 0 8px 0; font-size:28px; letter-spacing:-0.2px; }
     .hero p.lead { margin:0 0 18px; color:var(--muted); }
     .hero .actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
     .hero .kpis { display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
     .kpi { background:rgba(10,20,30,0.03); padding:10px 12px; border-radius:10px; font-weight:600; }
 
     .hero-preview {
-      background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
-      border-radius:12px; padding:18px;
-      display:grid; grid-template-columns:repeat(5,1fr);
-      gap:12px; align-items:center; justify-items:center;
-      box-shadow:inset 0 0 0 1px rgba(0,0,0,0.02);
+      width:100%;
+      max-width:420px;
+      border-radius:12px;
+      object-fit:cover;
     }
     .sticky { width:64px; height:64px; border-radius:6px; box-shadow:0 6px 14px rgba(0,0,0,0.06); }
     .st-1{background:#ffe77a} .st-2{background:#cff08c} .st-3{background:#ffa7d2} .st-4{background:#90b9ff} .st-5{background:#7be6a4}
@@ -323,13 +322,7 @@
         </div>
       </div>
 
-      <aside class="hero-preview" aria-hidden="true">
-        <div class="sticky st-1"></div>
-        <div class="sticky st-2"></div>
-        <div class="sticky st-3"></div>
-        <div class="sticky st-4"></div>
-        <div class="sticky st-5"></div>
-      </aside>
+      <img src="images/hero.png" alt="Демонстрация возможностей клуба" class="hero-preview">
     </section>
 
     <!-- Problem -->
