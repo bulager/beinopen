@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Бизнес-клуб — Лендинг</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#f6f7f9;
+      --card:#ffffff;
+      --accent:#1f7bd2;
+      --muted:#6b7280;
+      --shadow:0 6px 24px rgba(20,23,28,0.06);
+      --grid:rgba(0,0,0,0.03);
+      --radius:14px;
+      --container:1100px;
+    }
+
+    * { box-sizing:border-box }
+    html,body { height:100% }
+    body {
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#fbfcfe);
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:40px 20px;
+    }
+
+    .wrap { max-width:var(--container); margin:0 auto; }
+
+    header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:36px;
+      flex-wrap:wrap;
+    }
+
+    .logo { display:flex; align-items:center; gap:12px; flex:1; min-width:220px; }
+    .logo .mark {
+      width:48px; height:48px;
+      background:linear-gradient(135deg,#ff8a65,#ffb86b);
+      border-radius:10px; box-shadow:var(--shadow);
+      display:flex; align-items:center; justify-content:center;
+      color:white; font-weight:700; font-size:18px;
+    }
+    .logo h1 { margin:0; font-size:18px; font-weight:700; }
+    .logo p { margin:0; color:var(--muted); font-size:13px; }
+
+    nav { display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .btn {
+      background:var(--accent);
+      color:white;
+      padding:10px 16px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow:0 6px 18px rgba(31,123,210,0.18);
+      white-space:nowrap;
+    }
+    .btn.ghost {
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(31,123,210,0.12);
+      box-shadow:none;
+    }
+
+    /* Hero */
+    .hero {
+      background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.9));
+      padding:32px;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:36px;
+    }
+    .hero h2 { margin:0 0 8px 0; font-size:28px; letter-spacing:-0.2px; }
+    .hero p.lead { margin:0 0 18px; color:var(--muted); font-size:16px; }
+    .hero .actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .hero .kpis { display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+    .kpi { background:rgba(10,20,30,0.03); padding:10px 12px; border-radius:10px; font-weight:600; }
+
+    .hero-preview {
+      background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+      border-radius:12px; padding:18px;
+      display:grid; grid-template-columns:repeat(5,1fr);
+      gap:12px; align-items:center; justify-items:center;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,0.02);
+    }
+    .sticky { width:64px; height:64px; border-radius:6px; box-shadow:0 6px 14px rgba(0,0,0,0.06); }
+    .st-1{background:#ffe77a} .st-2{background:#cff08c} .st-3{background:#ffa7d2} .st-4{background:#90b9ff} .st-5{background:#7be6a4}
+
+    /* Sections, cards, etc — unchanged */
+    section { margin-bottom:36px }
+    .section-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+    .section-head h3 { margin:0; font-size:20px }
+    .section-head p { margin:0; color:var(--muted) }
+
+    /* Problem */
+    .problem-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .problem-card{
+      background:var(--card);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      font-size:15px;
+    }
+    .problem-card ul{margin:12px 0 0 18px;padding:0;color:var(--muted)}
+    .problem-card li{margin-bottom:10px}
+
+    /* Solution */
+    .solution{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .solution .text{
+      flex:1;
+      min-width:300px;
+    }
+    .solution .cta-card{
+      width:340px;
+      background:linear-gradient(180deg,#fff,#f7fbff);
+      border-radius:12px;padding:16px;box-shadow:var(--shadow);
+    }
+    .solution em{font-style:normal;background:linear-gradient(90deg,#fff4e6,#fff);padding:6px 8px;border-radius:8px;display:inline-block;font-weight:600}
+
+    /* Benefits */
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+    }
+    .benefit{
+      background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);
+    }
+    .benefit h4{margin:0 0 8px 0;font-size:15px}
+    .benefit ul{margin:8px 0 0 12px;color:var(--muted)}
+    .benefit li{margin-bottom:8px}
+
+    /* How it works */
+    .steps{
+      display:flex;gap:12px;flex-wrap:wrap;
+    }
+    .step{
+      background:linear-gradient(180deg,#fff,#fcfeff);
+      padding:14px;border-radius:12px;flex:1;min-width:180px;box-shadow:var(--shadow);
+    }
+    .step h5{margin:0 0 8px 0;font-size:14px}
+
+    /* Pricing */
+    .pricing{
+      background:linear-gradient(180deg,#fff,#f7fbff);
+      padding:22px;border-radius:16px;box-shadow:var(--shadow);
+      max-width:420px;
+    }
+    .pricing h2{margin:0 0 6px 0;font-size:20px}
+    .pricing .price{font-size:36px;font-weight:800;margin:8px 0}
+    .price-note{color:var(--muted);margin-bottom:10px}
+    .pricing ul{margin:12px 0 14px 16px;color:var(--muted)}
+    .pricing button{width:100%;padding:12px;border-radius:12px;border:0;font-weight:700;background:#0f1724;color:white;cursor:pointer}
+    .guarantee{font-size:13px;color:var(--muted);margin-top:10px}
+
+    /* Social proof */
+    .quotes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .quote{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+    .quote p{margin:0;color:var(--muted)}
+    .quote strong{display:block;margin-top:12px;color:#0f1724}
+
+    /* FAQ */
+    .faq .item{background:var(--card);border-radius:12px;padding:12px;margin-bottom:8px;box-shadow:var(--shadow)}
+    .faq .q{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+    .faq .a{margin-top:8px;color:var(--muted);display:none}
+    .faq .q span{font-weight:600}
+
+    /* Final CTA */
+    .final-cta{
+      background:linear-gradient(90deg,#1f7bd2,#7b6efc);
+      color:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 12px 40px rgba(31,123,210,0.18)
+    }
+    .final-cta h3{margin:0 0 8px 0}
+    .final-cta p{margin:0 0 16px 0;color:rgba(255,255,255,0.92)}
+    .final-cta .btn{background:white;color:var(--accent);padding:12px 18px;border-radius:12px;font-weight:700}
+
+    /* responsive */
+    @media (max-width:980px) {
+      .hero { grid-template-columns:1fr; padding:24px; }
+      .hero-preview { display:none; }
+      .problem-grid { grid-template-columns:1fr; }
+      .quotes { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:768px) {
+      body { padding:24px 12px; }
+      header { flex-direction:column; align-items:flex-start; gap:16px; }
+      nav { justify-content:flex-start; }
+      .hero h2 { font-size:24px; }
+      .hero p.lead { font-size:15px; }
+      .btn { padding:10px 14px; font-size:14px; }
+      .solution { flex-direction:column; }
+      .solution .cta-card, .pricing { width:100%; max-width:100%; }
+      .benefits-grid { grid-template-columns:1fr; }
+      .steps { flex-direction:column; }
+    }
+
+    @media (max-width:480px) {
+      body { padding:20px 10px; font-size:15px; }
+      .hero { padding:20px; }
+      .hero h2 { font-size:20px; }
+      .logo .mark { width:40px; height:40px; font-size:16px; }
+      .logo h1 { font-size:16px; }
+      .final-cta { padding:20px; font-size:15px; }
+      .final-cta .btn { width:100%; font-size:16px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header>
+      <div class="logo">
+        <div class="mark">BK</div>
+        <div>
+          <h1>Бизнес-клуб [Название Клуба]</h1>
+          <p>Поддержка владельцев fashion-брендов</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="btn ghost" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">FAQ</button>
+        <button class="btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Вступить</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="hero">
+      <div>
+        <h2>Перестаньте принимать ключевые решения в одиночку</h2>
+        <p class="lead">Сообщество владельцев модных брендов, где вы получаете экспертную поддержку, проверенные шаблоны и регулярные воркшопы по маркетингу, найму и правовым вопросам в fashion.</p>
+
+        <div class="actions">
+          <button class="btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Вступить в клуб</button>
+          <button class="btn ghost" onclick="document.getElementById('benefits').scrollIntoView({behavior:'smooth'})">Что внутри</button>
+        </div>
+
+        <div class="kpis" role="list">
+          <div class="kpi" role="listitem">2 воркшопа / мес</div>
+          <div class="kpi" role="listitem">Приватный чат</div>
+          <div class="kpi" role="listitem">Юристы & HR</div>
+        </div>
+      </div>
+
+      <aside class="hero-preview" aria-hidden="true">
+        <div class="sticky st-1"></div>
+        <div class="sticky st-2"></div>
+        <div class="sticky st-3"></div>
+        <div class="sticky st-4"></div>
+        <div class="sticky st-5"></div>
+      </aside>
+    </section>
+
+    <!-- Problem -->
+    <section id="problem" aria-labelledby="problem-heading">
+      <div class="section-head">
+        <h3 id="problem-heading">Вам знакомо это чувство?</h3>
+        <p>Боли, с которыми сталкиваются владельцы fashion-брендов</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card" aria-hidden="false">
+          <ul>
+            <li>Принимаете ключевые решения в одиночку, не с кем посоветоваться</li>
+            <li>Теряете деньги на непроверенных маркетинговых стратегиях</li>
+            <li>Некому задать "глупый" вопрос по найму, производству или юр. вопросам</li>
+          </ul>
+        </div>
+
+        <div class="problem-card">
+          <ul>
+            <li>Чувствуете, что теряете тренды в digital-продвижении</li>
+            <li>Устали от советов "экспертов", которые не работали в fashion-индустрии</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section id="solution" aria-labelledby="solution-heading">
+      <div class="section-head">
+        <h3 id="solution-heading">Представьте другое будущее</h3>
+        <p>Как мы это решаем</p>
+      </div>
+
+      <div class="solution">
+        <div class="text">
+          <p><em>Бизнес-клуб [Название Клуба] — это ваша личная команда поддержки.</em> Место, где вас понимают без лишних слов, потому что ваши коллеги здесь сталкиваются с теми же вызовами. Это не очередной курс или чат с ботом — это живые люди, реальные решения и поддержка 24/7.</p>
+        </div>
+
+        <div class="cta-card" role="complementary" aria-label="callout">
+          <h4>Готовы к другому подходу?</h4>
+          <p style="color:var(--muted);margin:8px 0 12px">Присоединяйтесь к клубу и начните получать практическую поддержку уже сегодня.</p>
+          <button class="btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Вступить в клуб</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" aria-labelledby="benefits-heading">
+      <div class="section-head">
+        <h3 id="benefits-heading">Что вы получите в клубе</h3>
+        <p>Полный набор инструментов и форматов для роста вашего fashion-бизнеса</p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit">
+          <h4>🎓 Экспертные сессии</h4>
+          <ul>
+            <li>2 раза в месяц — практические воркшопы</li>
+            <li>Спикеры с опытом работы в индустрии</li>
+          </ul>
+        </div>
+
+        <div class="benefit">
+          <h4>Воркшопы по маркетингу</h4>
+          <ul>
+            <li>Instagram / TikTok — практические скрипты и кейсы</li>
+            <li>Тестирование гипотез и фреймворки</li>
+          </ul>
+        </div>
+
+        <div class="benefit">
+          <h4>Разборы систем найма</h4>
+          <ul>
+            <li>Процессы найма для ритейла</li>
+            <li>Шаблоны интервью и чеклисты</li>
+          </ul>
+        </div>
+
+        <div class="benefit">
+          <h4>Юридические консультации</h4>
+          <ul>
+            <li>Специфика контрактов и поставок</li>
+            <li>Типовые ошибки и защита бренда</li>
+          </ul>
+        </div>
+
+        <div class="benefit">
+          <h4>👥 Приватное сообщество</h4>
+          <ul>
+            <li>Закрытый Telegram-чат с владельцами брендов</li>
+            <li>Нетворкинг-сессии и подбор релевантных контактов</li>
+            <li>Возможность найти партнеров для коллабораций</li>
+          </ul>
+        </div>
+
+        <div class="benefit">
+          <h4>📈 Библиотека знаний</h4>
+          <ul>
+            <li>База проверенных шаблонов и документов</li>
+            <li>Записи всех прошедших воркшопов</li>
+            <li>Гайды по запуску рекламы для модных брендов</li>
+          </ul>
+        </div>
+
+        <div class="benefit">
+          <h4>🔄 Разборы кейсов</h4>
+          <ul>
+            <li>Анализ ваших конкретных бизнес-задач</li>
+            <li>Коллективный мозговой штурм</li>
+            <li>Рекомендации от практиков индустрии</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" aria-labelledby="how-heading">
+      <div class="section-head">
+        <h3 id="how-heading">Как это работает</h3>
+        <p>Простая логика — вступление, подключение, участие, результат</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <h5>1. Вступаете</h5>
+          <p>Оплачиваете годовую подписку</p>
+        </div>
+        <div class="step">
+          <h5>2. Подключаетесь</h5>
+          <p>Получаете доступ к чату и платформе</p>
+        </div>
+        <div class="step">
+          <h5>3. Участвуете</h5>
+          <p>В воркшопах и нетворкингах</p>
+        </div>
+        <div class="step">
+          <h5>4. Растете</h5>
+          <p>Применяете знания и увеличиваете прибыль</p>
+        </div>
+      </div>
+    </section>
+    <!-- Новый блок: Работаем на результат -->
+    <div class="highlight">
+      <h3>🚀 Работаем максимально на результат</h3>
+      <p>Мы выводим марки одежды на мультибренды.
+        <li>Хотите попасть в Трендайленд и на Пойзон Дроп? Рассказать о своих услугах резидентам бизнес-клуба?</li>
+        <li>Приходите на встречи клуба в Казани, Питере и ещё 10 городах — или присоединяйтесь к онлайн демодню.</li>
+        <li>Пройдите велком-программу и станьте резидентом. Через 1,5 месяца мы познакомим вас с сообществом.</li>
+      </ul>
+      <p>Мы вывели на мультибренды и универмаги десятки бизнесов. Среди резидентов клуба — десятки ритейлеров, инвестфонды, сообщества стилистов и сотни марок. Расскажите им о себе уже через 1,5 месяца.</p>
+    </div>
+
+    <!-- Pricing -->
+    <section id="pricing" aria-labelledby="pricing-heading">
+      <div class="section-head">
+        <h3 id="pricing-heading">Инвестиция в ваш рост</h3>
+        <p>Прозрачная годовая подписка — минимальные риски, максимальная отдача</p>
+      </div>
+
+      <!-- включаем ваш html-фрагмент, подправленный под стиль -->
+      <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
+        <div class="pricing" role="region" aria-label="pricing card">
+          <h2>Годовая подписка</h2>
+          <div class="price">12 000 ₽</div>
+          <div class="price-note">≈ 1 000 ₽ в месяц</div>
+
+          <ul>
+            <li>✅ Все экспертные воркшопы (24+ в год)</li>
+            <li>✅ Доступ к приватному чату</li>
+            <li>✅ База знаний и шаблонов</li>
+            <li>✅ Участие в нетворкинг-сессиях</li>
+            <li>✅ Разборы ваших кейсов</li>
+          </ul>
+
+          <button onclick="joinClub()" aria-label="Вступить в клуб">Вступить в клуб</button>
+          <p class="guarantee">Первый месяц — пробный период. Если не понравится, вернем деньги.</p>
+        </div>
+
+        <div style="flex:1;min-width:280px">
+          <h4 style="margin-top:0">Что включено (коротко)</h4>
+          <ul style="color:var(--muted);margin-left:16px">
+            <li>Регулярные проверенные шаблоны и чеклисты</li>
+            <li>Записи воркшопов и разборы кейсов</li>
+            <li>Доступ к юристам и HR-специалистам</li>
+            <li>Подбор релевантных контактов и партнеров</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section id="social" aria-labelledby="social-heading">
+      <div class="section-head">
+        <h3 id="social-heading">Что говорят участники</h3>
+        <p>Реальные истории — реальные результаты</p>
+      </div>
+
+      <div class="quotes">
+        <div class="quote">
+          <p>"За одну сессию по TikTok-маркетингу получила идеи, которые принесли +200 000 ₽ в месяц. Окупила подписку на 2 года вперед!"</p>
+          <strong>— Анна, основатель бренда сумок</strong>
+        </div>
+
+        <div class="quote">
+          <p>"Наконец-то нашла людей, которые понимают специфику именно модного бизнеса. Не нужно объяснять базовые вещи!"</p>
+          <strong>— Михаил, владелец ювелирного бренда</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-heading">
+      <div class="section-head">
+        <h3 id="faq-heading">Остались вопросы?</h3>
+        <p>Частые вопросы</p>
+      </div>
+
+      <div class="faq" aria-live="polite">
+        <div class="item">
+          <div class="q" data-target="a1"><span>Q: Что если я пропущу воркшоп?</span><span>+</span></div>
+          <div id="a1" class="a">A: Все сессии записываются и доступны в архиве</div>
+        </div>
+
+        <div class="item">
+          <div class="q" data-target="a2"><span>Q: Как часто проходят встречи?</span><span>+</span></div>
+          <div id="a2" class="a">A: 2 экспертных воркшопа в месяц + еженедельные нетворкинг-сессии</div>
+        </div>
+
+        <div class="item">
+          <div class="q" data-target="a3"><span>Q: Можно ли вернуть деньги?</span><span>+</span></div>
+          <div id="a3" class="a">A: Да, в течение первого месяца если решите, что клуб не для вас</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section aria-label="final cta">
+      <div class="final-cta">
+        <h3>Готовы перестать быть "одиноким волком" в бизнесе?</h3>
+        <p>Присоединяйтесь к сообществу, где ваши вызовы понимают, а решения находят вместе. Начните год роста с нами.</p>
+        <button class="btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Вступить в клуб за 12 000 ₽/год</button>
+      </div>
+    </section>
+
+    <footer style="margin-top:28px;color:var(--muted);font-size:13px;text-align:center">
+      © <span id="year"></span> Бизнес-клуб [Название Клуба]. Все права защищены.
+    </footer>
+
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // FAQ accordion
+    document.querySelectorAll('.faq .q').forEach(q => {
+      q.addEventListener('click', () => {
+        const targetId = q.getAttribute('data-target');
+        const a = document.getElementById(targetId);
+        const open = a.style.display === 'block';
+        // close all
+        document.querySelectorAll('.faq .a').forEach(x => x.style.display = 'none');
+        document.querySelectorAll('.faq .q span:last-child').forEach(el => el.textContent = '+');
+        if (!open) {
+          a.style.display = 'block';
+          q.querySelector('span:last-child').textContent = '−';
+        }
+      });
+    });
+
+    // join action (placeholder — replace with actual flow)
+    function joinClub(){
+      // example simple flow: open payment / signup.
+      // For now, show a prompt (in production, replace with real checkout).
+      const confirmed = confirm('Вы собираетесь вступить в клуб за 12 000 ₽/год. Перейти к оформлению?');
+      if(confirmed){
+        // redirect to a checkout or show success message
+        alert('Спасибо! Перенаправляем на страницу оформления (это заглушка).');
+        // window.location.href = '/checkout' // uncomment and update in real site
+      }
+    }
+
+    // basic accessibility: keyboard toggle for FAQ
+    document.querySelectorAll('.faq .q').forEach(q => {
+      q.setAttribute('tabindex',0);
+      q.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') q.click();
+      });
+    });
+
+    // smooth scroll polyfill fallback for older browsers: not included - modern browsers supported.
+  </script>
+</body>
+</html>
