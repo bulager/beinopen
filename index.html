@@ -26,6 +26,7 @@
     body {
       margin:0;
       font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      font-size:18px;
       background:linear-gradient(180deg,var(--bg),#fbfcfe);
       color:#0f1724;
       -webkit-font-smoothing:antialiased;
@@ -88,7 +89,7 @@
       margin-bottom:36px;
     }
     .hero h2 { margin:0 0 8px 0; font-size:32px; letter-spacing:-0.2px; }
-    .hero p.lead { margin:0 0 18px; color:var(--muted); font-size:16px; }
+    .hero p.lead { margin:0 0 18px; color:var(--muted); }
     .hero .actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
     .hero .kpis { display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
     .kpi { background:rgba(10,20,30,0.03); padding:10px 12px; border-radius:10px; font-weight:600; }
@@ -120,7 +121,6 @@
       border-radius:12px;
       padding:18px;
       box-shadow:var(--shadow);
-      font-size:15px;
     }
     .problem-card ul{margin:12px 0 0 18px;padding:0;color:var(--muted)}
     .problem-card li{margin-bottom:10px}
@@ -209,11 +209,10 @@
     }
 
     @media (max-width:768px) {
-      body { padding:24px 12px; }
+      body { padding:24px 12px; font-size:16px; }
       header { flex-direction:column; align-items:flex-start; gap:16px; }
       nav { justify-content:flex-start; }
       .hero h2 { font-size:28px; }
-      .hero p.lead { font-size:15px; }
       .btn { padding:10px 14px; font-size:14px; }
       .solution { flex-direction:column; }
       .solution .cta-card, .pricing { width:100%; max-width:100%; }
@@ -222,7 +221,7 @@
     }
 
     @media (max-width:480px) {
-      body { padding:20px 10px; font-size:15px; }
+      body { padding:20px 10px; font-size:16px; }
       .hero { padding:20px; }
       .hero h2 { font-size:24px; }
       .logo .mark { width:40px; height:40px; font-size:16px; }
